@@ -5241,7 +5241,7 @@ var $elm$core$Task$perform = F2(
 			$elm$core$Task$Perform(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
-var $elm$browser$Browser$element = _Browser_element;
+var $elm$browser$Browser$document = _Browser_document;
 var $author$project$Main$Model = F4(
 	function (dieFace, face, running, runs) {
 		return {dieFace: dieFace, face: face, running: running, runs: runs};
@@ -5873,20 +5873,12 @@ var $elm$svg$Svg$trustedNode = _VirtualDom_nodeNS('http://www.w3.org/2000/svg');
 var $elm$svg$Svg$circle = $elm$svg$Svg$trustedNode('circle');
 var $elm$svg$Svg$Attributes$cx = _VirtualDom_attribute('cx');
 var $elm$svg$Svg$Attributes$cy = _VirtualDom_attribute('cy');
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Main$drawNumber = function (face) {
 	return A2(
 		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				A2($elm$html$Html$Attributes$style, 'font-size', '100px'),
-				A2($elm$html$Html$Attributes$style, 'border', 'solid 5px'),
-				A2($elm$html$Html$Attributes$style, 'display', 'inline'),
-				A2($elm$html$Html$Attributes$style, 'margin', '5px')
-			]),
+		_List_Nil,
 		_List_fromArray(
 			[
 				$elm$html$Html$text(
@@ -5913,10 +5905,7 @@ var $author$project$Main$drawPicture = function (face) {
 			case 1:
 				return A2(
 					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							A2($elm$html$Html$Attributes$style, 'transform', 'translate(50%, 50%)')
-						]),
+					_List_Nil,
 					_List_fromArray(
 						[
 							$author$project$Main$drawNumber(face),
@@ -5960,10 +5949,7 @@ var $author$project$Main$drawPicture = function (face) {
 			case 2:
 				return A2(
 					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							A2($elm$html$Html$Attributes$style, 'transform', 'translate(50%, 50%)')
-						]),
+					_List_Nil,
 					_List_fromArray(
 						[
 							$author$project$Main$drawNumber(face),
@@ -6017,10 +6003,7 @@ var $author$project$Main$drawPicture = function (face) {
 			case 3:
 				return A2(
 					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							A2($elm$html$Html$Attributes$style, 'transform', 'translate(50%, 50%)')
-						]),
+					_List_Nil,
 					_List_fromArray(
 						[
 							$author$project$Main$drawNumber(face),
@@ -6084,10 +6067,7 @@ var $author$project$Main$drawPicture = function (face) {
 			case 4:
 				return A2(
 					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							A2($elm$html$Html$Attributes$style, 'transform', 'translate(50%, 50%)')
-						]),
+					_List_Nil,
 					_List_fromArray(
 						[
 							$author$project$Main$drawNumber(face),
@@ -6161,10 +6141,7 @@ var $author$project$Main$drawPicture = function (face) {
 			case 5:
 				return A2(
 					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							A2($elm$html$Html$Attributes$style, 'transform', 'translate(50%, 50%)')
-						]),
+					_List_Nil,
 					_List_fromArray(
 						[
 							$author$project$Main$drawNumber(face),
@@ -6248,10 +6225,7 @@ var $author$project$Main$drawPicture = function (face) {
 			case 6:
 				return A2(
 					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							A2($elm$html$Html$Attributes$style, 'transform', 'translate(50%, 50%)')
-						]),
+					_List_Nil,
 					_List_fromArray(
 						[
 							$author$project$Main$drawNumber(face),
@@ -6367,30 +6341,32 @@ var $elm$html$Html$Events$onClick = function (msg) {
 		$elm$json$Json$Decode$succeed(msg));
 };
 var $author$project$Main$view = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_fromArray(
+	return {
+		body: _List_fromArray(
 			[
-				A2($elm$html$Html$Attributes$style, 'width', 'auto'),
-				A2($elm$html$Html$Attributes$style, 'height', 'auto')
-			]),
-		_List_fromArray(
-			[
-				$author$project$Main$drawPicture(model.dieFace),
-				$author$project$Main$drawPicture(model.face),
 				A2(
-				$elm$html$Html$button,
+				$elm$html$Html$div,
+				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$Events$onClick($author$project$Main$Roll)
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text('Roll')
+						$author$project$Main$drawPicture(model.dieFace),
+						$author$project$Main$drawPicture(model.face),
+						A2(
+						$elm$html$Html$button,
+						_List_fromArray(
+							[
+								$elm$html$Html$Events$onClick($author$project$Main$Roll)
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Roll')
+							]))
 					]))
-			]));
+			]),
+		title: 'Nothing'
+	};
 };
-var $author$project$Main$main = $elm$browser$Browser$element(
+var $author$project$Main$main = $elm$browser$Browser$document(
 	{init: $author$project$Main$init, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
